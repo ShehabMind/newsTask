@@ -1,0 +1,14 @@
+com/newstask/BuildConfig.java
+ com.newstask.BuildConfig
+com/newstask/MainActivity.java
+ com.newstask.MainActivity
+com/newstask/ReactNativeFlipper.java
+ com.newstask.ReactNativeFlipper
+ com.newstask.ReactNativeFlipper$1
+ com.newstask.ReactNativeFlipper$2
+ com.newstask.ReactNativeFlipper$2$1
+com/newstask/MainApplication.java
+ com.newstask.MainApplication
+ com.newstask.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
