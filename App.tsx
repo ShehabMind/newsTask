@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -9,17 +10,22 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import Main from './src/screens/Main';
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <View style={styles.container}>
       <StatusBar />
-      <View>
-        <Text>News musala</Text>
-      </View>
-    </SafeAreaView>
+      <Main />
+    </View>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 export default App;
