@@ -2,6 +2,7 @@
 /* eslint-disable prettier/prettier */
 
 import React, {useState, useEffect} from 'react';
+import moment from 'moment';
 import {View, StyleSheet, ActivityIndicator, Image} from 'react-native';
 import {Text, NativeBaseProvider, ScrollView} from 'native-base';
 import NewsCard from '../Components/NewsCard';
@@ -40,14 +41,21 @@ const Details = props => {
 
         <View style={styles.imgView}>
           <Image
-            style={styles.tinyLogo}
+            style={styles.img}
             source={{
-              uri: urlToImage,
+              uri: urlToImage
+                ? urlToImage
+                : 'https://arts.tu.edu.ly/wp-content/uploads/2020/02/placeholder.png',
             }}
           />
         </View>
         <View style={styles.authorView}>
-          <Text> Article By : {author ? author : 'Unknown'}</Text>
+          <Text style={styles.authorText}>
+            Article By : {author ? author : 'Unknown'}
+          </Text>
+          <Text style={styles.authorText}>
+            {moment(publishedAt).format('lll')}
+          </Text>
         </View>
       </ScrollView>
     </NativeBaseProvider>
@@ -70,14 +78,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'green',
   },
-  imgView: {width: '95%', height: '35%', backgroundColor: 'yellow'},
-  authorView: {},
+  imgView: {
+    width: '98%',
+    height: '50%',
+    backgroundColor: 'yellow',
+  },
+  authorView: {
+    width: '98%',
+    height: '6%',
+    backgroundColor: 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 2,
+  },
   name: {
     fontSize: 22,
     fontFamily: 'Rubik-Bold',
   },
-
-  tinyLogo: {width: 200, height: 200},
+  img: {width: '100%', height: '100%', borderRadius: 15},
+  authorText: {fontFamily: 'Rubik-Light'},
 });
 
 //make this component available to the app
