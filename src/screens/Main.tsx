@@ -21,20 +21,19 @@ const News = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    function GetNewsFromApi() {
-      newsApi
-        .get('top-headlines?country=bg&apiKey=030a04ab01944d36825b48e027697fb2')
-        .then(res => {
-          setNews(res.data.articles);
-          setIsLoading(false);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
     GetNewsFromApi();
   }, []);
-
+  function GetNewsFromApi() {
+    newsApi
+      .get('top-headlines?country=bg&apiKey=030a04ab01944d36825b48e027697fb2')
+      .then(res => {
+        setNews(res.data.articles);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   return isLoading ? (
     <View>
       <ActivityIndicator />
@@ -93,6 +92,8 @@ const News = ({navigation}) => {
             </Box>
           )}
           keyExtractor={item => item.title}
+          refreshing={isLoading}
+          onRefresh={GetNewsFromApi}
         />
       </View>
     </NativeBaseProvider>
