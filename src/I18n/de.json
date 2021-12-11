@@ -1,11 +1,11 @@
 {
   "home": {
-    "title": "Willkommen",
-    "introduction": "Dieser Text ist von i18next und ist in deutsch."
+    "news": "Nachrichten",
+    "search here": "Dieser Text ist von i18next und ist in deutsch."
   },
   "page2": {
     "title": "Seite 2",
-    "introduction": "Text auf Seite 2"
+    "introduction": "Suche hier"
   },
   "common": {
     "currentLanguage": "Die Sprache ist auf '{{lng}}' gesetzt",
