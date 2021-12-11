@@ -67,6 +67,7 @@ const News = ({navigation}, props) => {
           style={styles.SearchInput}
           value={Search}
           onChangeText={text => searchFilter(text)}
+          placeholderTextColor="gray"
         />
         <FlatList
           data={news}
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    margin: 5,
+
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FEFEFE',
