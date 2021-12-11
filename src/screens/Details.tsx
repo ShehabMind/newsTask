@@ -3,19 +3,14 @@
 
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, Image} from 'react-native';
 import {Text, NativeBaseProvider} from 'native-base';
-import NewsCard from '../Components/NewsCard';
+
 import newsApi from '../API/News';
+import {ThemeContext, ThemeProvider} from '../Styles/ThemeManger';
 // create a component
 const Details = props => {
-  const {source, author, title, description, content, publishedAt, urlToImage} =
+  const {source, author, description, content, publishedAt, urlToImage} =
     props.route.params.item;
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,15 +29,18 @@ const Details = props => {
         console.log(error);
       });
   }
+  const {theme} = React.useContext(ThemeContext);
   return isLoading ? (
     <View>
       <ActivityIndicator />
     </View>
   ) : (
     <NativeBaseProvider>
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={[styles.container, styles[`container${theme}`]]}>
         <View style={styles.nameView}>
-          <Text style={styles.name}>{source.name}</Text>
+          <Text style={[styles.name, styles[`text${theme}`]]}>
+            {source.name}
+          </Text>
         </View>
 
         <View style={styles.imgView}>
@@ -56,18 +54,22 @@ const Details = props => {
           />
         </View>
         <View style={styles.authorView}>
-          <Text style={styles.authorText}>
+          <Text style={[styles.authorText, styles[`text${theme}`]]}>
             Article By : {author ? author : 'Unknown'}
           </Text>
-          <Text style={styles.authorText}>
+          <Text style={[styles.authorText, styles[`text${theme}`]]}>
             {moment(publishedAt).format('lll')}
           </Text>
         </View>
         <View style={styles.contentView}>
-          <Text style={styles.contentText}>{description}</Text>
-          <Text style={styles.contentText}>{content}</Text>
+          <Text style={[styles.contentText, styles[`text${theme}`]]}>
+            {description}
+          </Text>
+          <Text style={[styles.contentText, styles[`text${theme}`]]}>
+            {content}
+          </Text>
         </View>
-      </ScrollView>
+      </View>
     </NativeBaseProvider>
   );
 };
@@ -78,10 +80,11 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     alignItems: 'center',
-
+    // backgroundColor: 'red',
     borderRadius: 16,
   },
-
+  containerLight: {backgroundColor: '#FEFEFE'},
+  containerDark: {backgroundColor: '#212121'},
   nameView: {
     justifyContent: 'center',
     height: '8%',
@@ -109,6 +112,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'Rubik-Bold',
   },
+  textLight: {color: '#212121'},
+  textDark: {color: '#FEFEFE'},
   img: {width: '100%', height: '100%', borderRadius: 15},
   authorText: {fontFamily: 'Rubik-Bold'},
   contentText: {fontFamily: 'Rubik-Light'},

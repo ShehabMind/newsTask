@@ -1,14 +1,17 @@
 /* eslint-disable prettier/prettier */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
 import Navigator from './src/Navigator';
+import {ThemeProvider} from './src/Styles/ThemeManger';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Navigator />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 };
 

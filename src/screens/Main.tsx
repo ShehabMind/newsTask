@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, StyleSheet, ActivityIndicator, TextInput} from 'react-native';
 import {
   Box,
@@ -13,8 +13,9 @@ import {
   Spacer,
   NativeBaseProvider,
 } from 'native-base';
-import NewsCard from '../Components/NewsCard';
+
 import newsApi from '../API/News';
+import {ThemeContext} from '../Styles/ThemeManger';
 // create a component
 const News = ({navigation}) => {
   const [news, setNews] = useState([]);
@@ -54,6 +55,7 @@ const News = ({navigation}) => {
       setSearch(text);
     }
   };
+  const {theme} = React.useContext(ThemeContext);
 
   return isLoading ? (
     <View>
@@ -61,10 +63,10 @@ const News = ({navigation}) => {
     </View>
   ) : (
     <NativeBaseProvider>
-      <View style={styles.container}>
+      <View style={[styles.container, styles[`container${theme}`]]}>
         <TextInput
           placeholder="search here"
-          style={styles.SearchInput}
+          style={[styles.SearchInput, styles[`search${theme}`]]}
           value={Search}
           onChangeText={text => searchFilter(text)}
           placeholderTextColor="gray"
@@ -93,7 +95,7 @@ const News = ({navigation}) => {
                 <VStack style={{width: '80%'}}>
                   <Text
                     onPress={() => navigation.navigate('Details', {item})}
-                    style={styles.Title}
+                    style={[styles.Title, styles[`title${theme}`]]}
                     _dark={{
                       color: 'warmGray.50',
                     }}
@@ -136,16 +138,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FEFEFE',
     borderRadius: 6,
   },
+  containerLight: {backgroundColor: '#FEFEFE'},
+  containerDark: {backgroundColor: '#212121'},
   Title: {
     fontSize: 15,
     fontFamily: 'Roboto-Bold',
   },
+  titleDark: {color: '#FEFEFE'},
+  titleLight: {color: '#212121'},
   SearchInput: {
     height: 50,
     borderRadius: 50,
@@ -153,14 +157,15 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     margin: 15,
     borderColor: '#009688',
-    backgroundColor: '#FEFEFE',
+
     width: '95%',
     shadowOffset: {height: 5, width: 0},
     shadowColor: 'gray',
     shadowRadius: 6.68,
     elevation: 11,
-    color: 'gray',
   },
+  searchLight: {backgroundColor: '#FEFEFE', color: 'gray'},
+  searchDark: {backgroundColor: '#212121', color: '#FEFEFE'},
 });
 
 //make this component available to the app

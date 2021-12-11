@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-//import liraries
+
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -9,6 +9,18 @@ import News from './screens/Main';
 import Details from './screens/Details';
 import Settings from './screens/Setting';
 import {useTranslation} from 'react-i18next';
+import {ThemeProvider, ThemeContext} from './Styles/ThemeManger';
+
+const ToggleButton = () => {
+  const {toggleTheme, theme} = React.useContext(ThemeContext);
+  return (
+    <Button
+      title={theme === 'Dark' ? 'Light' : 'Dark'}
+      onPress={() => toggleTheme()}
+      color={'gray'}
+    />
+  );
+};
 
 const Btab = createBottomTabNavigator();
 
@@ -33,6 +45,7 @@ function BtabNav() {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
       })}>
@@ -49,7 +62,12 @@ function BtabNav() {
 const RootStack = createNativeStackNavigator();
 function RootStackNav() {
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator
+      screenOptions={{
+        headerRight: () => <ToggleButton />,
+        headerTintColor: 'gray',
+        headerStyle: {backgroundColor: '#FEFEFE'},
+      }}>
       <RootStack.Screen name="News" component={News} />
       <RootStack.Screen name="Details" component={Details} />
     </RootStack.Navigator>
@@ -57,6 +75,7 @@ function RootStackNav() {
 }
 // create a component
 const Navigator = () => {
+  const {theme} = React.useContext(ThemeContext);
   return <BtabNav />;
 };
 
