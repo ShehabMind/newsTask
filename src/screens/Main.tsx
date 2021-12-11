@@ -16,7 +16,7 @@ import {
 import NewsCard from '../Components/NewsCard';
 import newsApi from '../API/News';
 // create a component
-const News = ({navigation}) => {
+const News = ({navigation}, props) => {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const News = ({navigation}) => {
   }, []);
   function GetNewsFromApi() {
     newsApi
-      .get('top-headlines?country=bg&apiKey=030a04ab01944d36825b48e027697fb2')
+      .get('top-headlines?country=us&apiKey=030a04ab01944d36825b48e027697fb2')
       .then(res => {
         setNews(res.data.articles);
         setIsLoading(false);
@@ -57,11 +57,14 @@ const News = ({navigation}) => {
                 <Avatar
                   size="50px"
                   source={{
-                    uri: item.urlToImage,
+                    uri: item.urlToImage
+                      ? item.urlToImage
+                      : 'https://arts.tu.edu.ly/wp-content/uploads/2020/02/placeholder.png',
                   }}
                 />
                 <VStack style={{width: '80%'}}>
                   <Text
+                    onPress={() => navigation.navigate('Details', {item})}
                     style={styles.Title}
                     _dark={{
                       color: 'warmGray.50',

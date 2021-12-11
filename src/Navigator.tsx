@@ -5,12 +5,14 @@ import {View, Text, StyleSheet} from 'react-native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import News from './screens/Main';
+import Details from './screens/Details';
 
 const RootStack = createNativeStackNavigator();
 function RootStackNav() {
   return (
     <RootStack.Navigator>
       <RootStack.Screen name="News" component={News} />
+      <RootStack.Screen name="Details" component={Details} />
     </RootStack.Navigator>
   );
 }
