@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     shadowColor: 'gray',
     shadowRadius: 6.68,
     elevation: 11,
+    color: 'gray',
   },
 });
 

@@ -1,0 +1,19 @@
+{
+  "Main": {
+    "title": "الأخبار",
+    "introduction": "هذا النص من i18next وهو باللغة الألمانية."
+  },
+  "Details": {
+    "title": "محتوي الخبر",
+    "introduction": "النص في الصفحة 2"
+  },
+  "common": {
+    "currentLanguage": " تم تعيين اللغة على '{{lng}}' ",
+    "actions": {
+      "toggleToGerman": "الألمانية",
+      "toggleToEnglish": "الإنجليزية",
+      "toggleToArabic": "العربية",
+      "goToPage2": "افتح الصفحة 2"
+    }
+  }
+}

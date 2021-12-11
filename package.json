@@ -10,14 +10,18 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.14",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "axios": "^0.24.0",
+    "i18next": "^21.6.0",
     "moment": "^2.29.1",
     "native-base": "^3.2.2",
     "react": "17.0.2",
+    "react-i18next": "^11.15.0",
     "react-native": "0.66.3",
+    "react-native-locale-detector": "^1.0.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-svg": "^12.1.1",
