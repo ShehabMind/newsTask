@@ -3,8 +3,14 @@
 
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
-import {View, StyleSheet, ActivityIndicator, Image} from 'react-native';
-import {Text, NativeBaseProvider, ScrollView} from 'native-base';
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Image,
+  ScrollView,
+} from 'react-native';
+import {Text, NativeBaseProvider} from 'native-base';
 import NewsCard from '../Components/NewsCard';
 import newsApi from '../API/News';
 // create a component
@@ -57,6 +63,10 @@ const Details = props => {
             {moment(publishedAt).format('lll')}
           </Text>
         </View>
+        <View style={styles.contentView}>
+          <Text style={styles.contentText}>{description}</Text>
+          <Text style={styles.contentText}>{content}</Text>
+        </View>
       </ScrollView>
     </NativeBaseProvider>
   );
@@ -68,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     alignItems: 'center',
-    backgroundColor: '#FEBEFE',
+
     borderRadius: 16,
   },
 
@@ -76,27 +86,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '8%',
     alignItems: 'center',
-    backgroundColor: 'green',
   },
   imgView: {
     width: '98%',
     height: '50%',
-    backgroundColor: 'yellow',
   },
   authorView: {
-    width: '98%',
-    height: '6%',
-    backgroundColor: 'gray',
+    width: '100%',
+    height: '8%',
+
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 2,
+    margin: 6,
+  },
+  contentView: {
+    width: '95%',
+    height: '44%',
+
+    margin: 4,
   },
   name: {
     fontSize: 22,
     fontFamily: 'Rubik-Bold',
   },
   img: {width: '100%', height: '100%', borderRadius: 15},
-  authorText: {fontFamily: 'Rubik-Light'},
+  authorText: {fontFamily: 'Rubik-Bold'},
+  contentText: {fontFamily: 'Rubik-Light'},
 });
 
 //make this component available to the app
