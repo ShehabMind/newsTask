@@ -1,13 +1,18 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
 import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {
-  View,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
+  Box,
   FlatList,
-} from 'react-native';
+  Avatar,
+  HStack,
+  VStack,
+  Text,
+  Spacer,
+  NativeBaseProvider,
+} from 'native-base';
 import NewsCard from '../Components/NewsCard';
 import newsApi from '../API/News';
 // create a component
@@ -35,13 +40,62 @@ const News = ({navigation}) => {
       <ActivityIndicator />
     </View>
   ) : (
-    <View style={styles.container}>
-      <Text>calls</Text>
-      <FlatList
-        data={news}
-        renderItem={({item}) => <Text>{item.author}</Text>}
-      />
-    </View>
+    <NativeBaseProvider>
+      <View style={styles.container}>
+        <FlatList
+          data={news}
+          renderItem={({item}) => (
+            <Box
+              borderBottomWidth="1"
+              _dark={{
+                borderColor: 'gray.600',
+              }}
+              borderColor="coolGray.200"
+              pl="4"
+              pr="5"
+              py="2">
+              <HStack space={3} justifyContent="space-between">
+                <Avatar
+                  size="50px"
+                  source={{
+                    uri: item.urlToImage,
+                  }}
+                />
+                <VStack style={{width: '80%'}}>
+                  <Text
+                    style={styles.Title}
+                    _dark={{
+                      color: 'warmGray.50',
+                    }}
+                    color="coolGray.800"
+                    bold>
+                    {item.title}
+                  </Text>
+                  <Text
+                    color="coolGray.600"
+                    _dark={{
+                      color: 'warmGray.200',
+                    }}>
+                    {item.recentText}
+                  </Text>
+                </VStack>
+                <Spacer />
+                <Text
+                  fontSize="xs"
+                  _dark={{
+                    color: 'warmGray.50',
+                  }}
+                  color="coolGray.800"
+                  alignSelf="flex-start">
+                  {item.shehab}
+                </Text>
+              </HStack>
+            </Box>
+          )}
+          keyExtractor={item => item.title}
+        />
+      </View>
+    </NativeBaseProvider>
   );
 };
 
@@ -49,9 +103,15 @@ const News = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    margin: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2c3e50',
+    backgroundColor: '#FEFEFE',
+    borderRadius: 6,
+  },
+  Title: {
+    fontSize: 15,
   },
 });
 
