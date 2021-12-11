@@ -1,7 +1,8 @@
 {
   "translation": {
-    "news": "Welcome Message",
-    "search here": "search here"
+    "news": "news",
+    "selectedLang": "selected Language",
+    "langSelector": "Language Selector"
   },
   "page2": {
     "title": "Page 2",

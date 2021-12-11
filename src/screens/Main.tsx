@@ -16,7 +16,7 @@ import {
 import NewsCard from '../Components/NewsCard';
 import newsApi from '../API/News';
 // create a component
-const News = ({navigation}, props) => {
+const News = ({navigation}) => {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

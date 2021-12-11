@@ -1,27 +1,58 @@
 /* eslint-disable prettier/prettier */
-//import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
 import {useTranslation} from 'react-i18next';
-// create a component
-const Settings = () => {
+import {
+  FormControl,
+  Select,
+  HStack,
+  Text,
+  Container,
+  CheckIcon,
+  Center,
+  NativeBaseProvider,
+} from 'native-base';
+
+export const Settings = props => {
   const {t, i18n} = useTranslation();
+  const [value, setValue] = React.useState('en');
   return (
-    <View style={styles.container}>
-      <Text>{(t, 'news')}</Text>
-    </View>
+    <Container>
+      <FormControl isRequired isInvalid>
+        <FormControl.Label>{t('langSelector')}</FormControl.Label>
+        <Select
+          selectedValue={value}
+          minWidth={200}
+          accessibilityLabel="change the language"
+          placeholder="change the language"
+          onValueChange={itemValue => {
+            setValue(itemValue);
+            i18n.changeLanguage(itemValue);
+          }}
+          _selectedItem={{
+            bg: 'teal.600',
+            endIcon: <CheckIcon size={5} />,
+          }}
+          mt={1}>
+          <Select.Item label="English" value="en" />
+          <Select.Item label="German" value="de" />
+        </Select>
+      </FormControl>
+      <HStack mt={3} alignItems="baseline">
+        <Text fontSize="md">{t('selectedLang')} </Text>
+        <Text fontSize="md" bold>
+          {value}
+        </Text>
+      </HStack>
+    </Container>
   );
 };
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
-
-//make this component available to the app
-export default Settings;
+export default () => {
+  return (
+    <NativeBaseProvider>
+      <Center flex={1} px="3">
+        <Settings />
+      </Center>
+    </NativeBaseProvider>
+  );
+};
