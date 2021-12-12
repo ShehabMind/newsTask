@@ -7,9 +7,9 @@ import {View, StyleSheet, ActivityIndicator, Image} from 'react-native';
 import {Text, NativeBaseProvider} from 'native-base';
 
 import newsApi from '../API/News';
-import {ThemeContext, ThemeProvider} from '../Styles/ThemeManger';
+import {ThemeContext} from '../Styles/ThemeManger';
 // create a component
-const Details = props => {
+const Details = (props: any) => {
   const {source, author, description, content, publishedAt, urlToImage} =
     props.route.params.item;
   const [news, setNews] = useState([]);

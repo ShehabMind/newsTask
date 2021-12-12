@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, ActivityIndicator, TextInput} from 'react-native';
 import {
   Box,
@@ -39,7 +39,7 @@ const News = ({navigation}) => {
       });
   }
 
-  const searchFilter = text => {
+  const searchFilter = (text: string) => {
     if (text) {
       const newData = MasterData.filter(item => {
         const itemData = item.title
@@ -124,7 +124,7 @@ const News = ({navigation}) => {
               </HStack>
             </Box>
           )}
-          keyExtractor={(item, index) => item.title}
+          keyExtractor={(item: any) => item.title}
           refreshing={isLoading}
           onRefresh={GetNewsFromApi}
         />
