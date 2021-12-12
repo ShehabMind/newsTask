@@ -20,7 +20,7 @@ const Details = props => {
   }, []);
   function GetNewsFromApi() {
     newsApi
-      .get('top-headlines?country=us&apiKey=030a04ab01944d36825b48e027697fb2')
+      .get('top-headlines?country=us&apiKey=ee0458f8f5554c80a82eb5d8abfd6677')
       .then(res => {
         setNews(res.data.articles);
         setIsLoading(false);

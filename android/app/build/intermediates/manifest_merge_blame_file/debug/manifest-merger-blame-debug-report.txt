@@ -19,7 +19,7 @@
 13-->[com.facebook.flipper:flipper:0.99.0] C:\Users\MaSteR_MinD\.gradle\caches\transforms-3\2f5725507f1929c6ddf8255f0bef77bd\transformed\jetified-flipper-0.99.0\AndroidManifest.xml:16:22-73
 14
 15    <application
-15-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:6:5-24:19
+15-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:6:5-34:19
 16        android:name="com.newstask.MainApplication"
 16-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:7:7-38
 17        android:allowBackup="false"
@@ -41,7 +41,7 @@
 25-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\debug\AndroidManifest.xml:11:9-86
 25-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\debug\AndroidManifest.xml:11:19-83
 26        <activity
-26-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:13:7-23:18
+26-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:13:7-33:18
 27            android:name="com.newstask.MainActivity"
 27-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:14:9-37
 28            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
@@ -62,7 +62,27 @@
 35-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:21:13-73
 35-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:21:23-70
 36            </intent-filter>
-37        </activity>
-38    </application>
+37            <intent-filter>
+37-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:23:11-31:23
+38                <action android:name="android.intent.action.VIEW" />
+38-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:24:9-61
+38-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:24:17-58
 39
-40</manifest>
+40                <category android:name="android.intent.category.DEFAULT" />
+40-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:25:9-68
+40-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:25:19-65
+41                <category android:name="android.intent.category.BROWSABLE" />
+41-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:26:9-70
+41-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:26:19-67
+42
+43                <data
+43-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:28:9-30:35
+44                    android:host="app"
+44-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:29:11-29
+45                    android:scheme="demo" />
+45-->C:\Users\MaSteR_MinD\Desktop\MusalaTask\newsTask\android\app\src\main\AndroidManifest.xml:30:11-32
+46            </intent-filter>
+47        </activity>
+48    </application>
+49
+50</manifest>
